@@ -1,33 +1,40 @@
 import React from 'react';
-// import Hero from './Components/Hero';
-import About from './Components/About'; 
-import Button from './Components/Button';
-import Contact from './Components/Contact';
-import Footer from './Components/Footer';
-import Hero from './Components/Hero';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Projects from './Components/Projects';
-import Service from './Components/Service';
-import Testimonials from './Components/Testimonials';
-import WhyUs from './Components/WhyUs';
-
-
+import Hero from './Pages/Hero';
+import About from './Pages/About';
+import Services from './Pages/Service';
+import Projects from './Pages/Projects';
+import WhyUs from './Pages/WhyUs';
+import Testimonials from './Pages/Testimonials';
+import Contact from './Pages/Contact';
+import Footer from './Components/Footer';
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      <About />
-      <Button />
-      <Hero />
-      <Projects />
-      <Service />
-      <Testimonials />
-      <WhyUs />
-      <Contact />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <About />
+            <Services />
+            <Projects />
+            <WhyUs />
+            <Testimonials />
+            <Contact />
+          </>
+        } />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/why-us" element={<WhyUs />} />
+        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <Footer />
-
-    </>
+    </Router>
   );
 }
 

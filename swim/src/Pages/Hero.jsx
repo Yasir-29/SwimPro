@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 const Hero = () => {
@@ -18,11 +19,20 @@ const Hero = () => {
         <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
           Custom pool design, construction, and renovation for luxury homes and resorts. Experience the art of aquatic living with SwimDesigners.
         </p>
+
+        {/* Buttons with Routing */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="text-lg px-8 py-3">Get Started</Button>
-          <Button className="bg-white text-[#0B1B30] hover:bg-[#F3F4F6] shadow-md text-lg px-8 py-3">View Projects</Button>
+          <Link to="/contact">
+            <Button className="text-lg px-8 py-3">Get Started</Button>
+          </Link>
+          <Link to="/projects">
+            <Button className="bg-white text-[#0B1B30] hover:bg-[#F3F4F6] shadow-md text-lg px-8 py-3">
+              View Projects
+            </Button>
+          </Link>
         </div>
       </div>
+
       {/* Decorative SVG Wave */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
         <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,4 +43,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;
