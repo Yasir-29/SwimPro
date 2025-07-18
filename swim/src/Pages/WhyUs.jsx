@@ -1,59 +1,96 @@
-import React from "react";
+import { Clock, Shield, Users, DollarSign, Award, Headphones } from "lucide-react"
 
-const features = [
-  {
-    icon: (
-      <svg className="w-8 h-8 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" /></svg>
-    ),
-    title: "Expert Team",
-    desc: "Skilled professionals with decades of experience."
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /></svg>
-    ),
-    title: "Quality Materials",
-    desc: "We use only the best, most durable materials."
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20l9-5-9-5-9 5 9 5z" /><path d="M12 12V4" /></svg>
-    ),
-    title: "Innovative Design",
-    desc: "Modern, creative, and functional pool solutions."
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3h.01" /><path d="M21 3v6h-6" /></svg>
-    ),
-    title: "Customer Focused",
-    desc: "We listen, adapt, and deliver to your needs."
-  }
-];
+export default function WhyUs() {
+  const benefits = [
+    {
+      icon: <Clock className="w-8 h-8" />,
+      title: "Timely Delivery",
+      description: "We complete projects on schedule without compromising quality standards.",
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "ISI Materials",
+      description: "Only premium ISI certified materials used for long-lasting durability.",
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Expert Team",
+      description: "Skilled professionals with years of experience in pool construction.",
+    },
+    {
+      icon: <DollarSign className="w-8 h-8" />,
+      title: "Cost-Effective",
+      description: "Competitive pricing without hidden costs or compromise on quality.",
+    },
+    {
+      icon: <Award className="w-8 h-8" />,
+      title: "Quality Assurance",
+      description: "Rigorous quality checks at every stage of construction process.",
+    },
+    {
+      icon: <Headphones className="w-8 h-8" />,
+      title: "24/7 Support",
+      description: "Round-the-clock customer support for maintenance and queries.",
+    },
+  ]
 
-const WhyUs = () => {
   return (
-    <div className="relative bg-white py-20">
-      {/* Decorative SVG Wave */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none -translate-y-full">
-        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#F3F4F6" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z" />
-        </svg>
-      </div>
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#0B1B30]">Why Choose Us</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((f, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center p-8 bg-[#F3F4F6] rounded-2xl shadow hover:shadow-xl transition-all duration-200">
-              <div className="mb-4">{f.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{f.title}</h3>
-              <p className="text-[#0B1B30]/80">{f.desc}</p>
+    <section className="py-20 bg-[#F3F4F6]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0B1B30] mb-6">
+            Why Choose <span className="text-[#00BFFF]">Veni Enterprises</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover what sets us apart in the swimming pool industry and why clients across India trust us with their
+            projects.
+          </p>
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
+            >
+              {/* Icon */}
+              <div className="w-20 h-20 bg-[#00BFFF]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#00BFFF] transition-colors duration-300">
+                <div className="text-[#00BFFF] group-hover:text-white transition-colors duration-300">
+                  {benefit.icon}
+                </div>
+              </div>
+
+              {/* Content */}
+              <h3 className="text-xl font-bold text-[#0B1B30] mb-4">{benefit.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default WhyUs; 
+        {/* Stats Section */}
+        <div className="mt-20 bg-white rounded-2xl p-8 shadow-lg">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-[#00BFFF] mb-2">500+</div>
+              <div className="text-gray-600">Projects Completed</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-[#00BFFF] mb-2">25+</div>
+              <div className="text-gray-600">Cities Covered</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-[#00BFFF] mb-2">10+</div>
+              <div className="text-gray-600">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-[#00BFFF] mb-2">100%</div>
+              <div className="text-gray-600">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

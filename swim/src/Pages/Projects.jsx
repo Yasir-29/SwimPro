@@ -1,47 +1,151 @@
-import React, { useState } from "react";
+"use client"
 
-const projects = [
-  { category: "Residential", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" },
-  { category: "Commercial", img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" },
-  { category: "Residential", img: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" },
-  { category: "Commercial", img: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80" },
-  { category: "Residential", img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" },
-  { category: "Commercial", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" },
-];
+import { useState } from "react"
+import { ExternalLink } from "lucide-react"
 
-const categories = ["All", "Residential", "Commercial"];
+export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState("all")
 
-const Projects = () => {
-  const [active, setActive] = useState("All");
-  const filtered = active === "All" ? projects : projects.filter(p => p.category === active);
+  const filters = [
+    { id: "all", label: "All Projects" },
+    { id: "residential", label: "Residential" },
+    { id: "commercial", label: "Commercial" },
+    { id: "resort", label: "Resort" },
+  ]
+
+  const projects = [
+    {
+      id: 1,
+      title: "Luxury Villa Pool",
+      category: "residential",
+      location: "Chennai",
+      image:
+        "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      description: "Modern infinity pool with LED lighting",
+    },
+    {
+      id: 2,
+      title: "Resort Complex",
+      category: "resort",
+      location: "Goa",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      description: "Large resort pool with water features",
+    },
+    {
+      id: 3,
+      title: "Corporate Office",
+      category: "commercial",
+      location: "Bangalore",
+      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      description: "Rooftop commercial pool design",
+    },
+    {
+      id: 4,
+      title: "Private Residence",
+      category: "residential",
+      location: "Mumbai",
+      image:
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      description: "Compact pool with spa features",
+    },
+    {
+      id: 5,
+      title: "Hotel Pool",
+      category: "commercial",
+      location: "Delhi",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      description: "Olympic-size hotel swimming pool",
+    },
+    {
+      id: 6,
+      title: "Beach Resort",
+      category: "resort",
+      location: "Kerala",
+      image:
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      description: "Beachfront infinity pool design",
+    },
+  ]
+
+  const filteredProjects =
+    activeFilter === "all" ? projects : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <div className="bg-[#F3F4F6] py-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-[#0B1B30]">Our Projects</h2>
-        {/* Tabs */}
-        <div className="flex justify-center gap-4 mb-10">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`px-5 py-2 rounded-xl font-medium transition shadow-sm ${active === cat ? "bg-[#00BFFF] text-white" : "bg-white text-[#0B1B30] hover:bg-[#F3F4F6]"}`}
-            >
-              {cat}
-            </button>
-          ))}
+    <section id="projects" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0B1B30] mb-6">
+            Our <span className="text-[#00BFFF]">Projects</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Explore our portfolio of stunning swimming pools across India, from luxury residences to commercial
+            complexes.
+          </p>
+
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {filters.map((filter) => (
+              <button
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  activeFilter === filter.id
+                    ? "bg-[#00BFFF] text-white shadow-lg"
+                    : "bg-[#F3F4F6] text-[#0B1B30] hover:bg-[#00BFFF]/10"
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
         </div>
-        {/* Gallery */}
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {filtered.map((proj, idx) => (
-            <div key={idx} className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-200">
-              <img src={proj.img} alt="Project" className="w-full h-56 object-cover" />
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <button className="bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors duration-300">
+                    <ExternalLink className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-semibold text-[#00BFFF] bg-[#00BFFF]/10 px-3 py-1 rounded-full">
+                    {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
+                  </span>
+                  <span className="text-sm text-gray-500">{project.location}</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#0B1B30] mb-2">{project.title}</h3>
+                <p className="text-gray-600">{project.description}</p>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Projects; 
+        {/* View More Button */}
+        <div className="text-center mt-12">
+          <button className="bg-[#00BFFF] hover:bg-[#0099CC] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            View All Projects
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}

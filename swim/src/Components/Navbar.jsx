@@ -1,84 +1,91 @@
-import React, { useState } from "react";
-import Button from "../Pages/Button";
+"use client"
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+import { useState } from "react"
+import { Menu, X, Phone } from "lucide-react"
 
-  const handleToggle = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ]
 
   return (
-    <nav className="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <a href="#hero" className="text-2xl font-bold text-[#0B1B30] tracking-tight">
-            SwimDesigners
-          </a>
-        </div>
+    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-[#00BFFF] rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">V</span>
+              </div>
+              <div className="ml-3">
+                <h1 className="text-xl font-bold text-[#0B1B30]">Veni Enterprises</h1>
+                <p className="text-xs text-gray-600">Swimming Pool Experts</p>
+              </div>
+            </div>
+          </div>
 
-        {/* Nav Links - Desktop */}
-        <div className="hidden md:flex gap-8 text-[#0B1B30] font-medium">
-          <a href="#hero" className="hover:text-[#00BFFF] transition">Home</a>
-          <a href="#about" className="hover:text-[#00BFFF] transition">About</a>
-          <a href="#services" className="hover:text-[#00BFFF] transition">Services</a>
-          <a href="#projects" className="hover:text-[#00BFFF] transition">Projects</a>
-          <a href="#why-us" className="hover:text-[#00BFFF] transition">Why Us</a>
-          <a href="#testimonials" className="hover:text-[#00BFFF] transition">Testimonials</a>
-          <a href="#contact" className="hover:text-[#00BFFF] transition">Contact</a>
-        </div>
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-[#0B1B30] hover:text-[#00BFFF] px-3 py-2 text-sm font-medium transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
 
-        {/* CTA Button - Desktop */}
-        <div className="hidden md:block">
-          <a href="#contact">
-            <Button>Request Quote</Button>
-          </a>
-        </div>
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <button className="bg-[#00BFFF] hover:bg-[#0099CC] text-white rounded-xl px-6 py-2 transition-all duration-300 hover:-translate-y-1 flex items-center">
+              <Phone className="w-4 h-4 mr-2" />
+              Request Quote
+            </button>
+          </div>
 
-        {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={handleToggle}
-            className="text-[#0B1B30] focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            <svg
-              width="28"
-              height="28"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 pt-4 pb-6 space-y-4 text-[#0B1B30] font-medium">
-          <a href="#hero" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">Home</a>
-          <a href="#about" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">About</a>
-          <a href="#services" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">Services</a>
-          <a href="#projects" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">Projects</a>
-          <a href="#why-us" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">Why Us</a>
-          <a href="#testimonials" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">Testimonials</a>
-          <a href="#contact" onClick={closeMenu} className="block hover:text-[#00BFFF] transition">Contact</a>
-          <div className="pt-2">
-            <a href="#contact" onClick={closeMenu}>
-              <Button>Request Quote</Button>
-            </a>
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-[#0B1B30] hover:text-[#00BFFF] p-2">
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
-      )}
-    </nav>
-  );
-};
 
-export default Navbar;
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-[#0B1B30] hover:text-[#00BFFF] block px-3 py-2 text-base font-medium transition-colors duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="pt-4">
+                <button className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-white rounded-xl px-6 py-2 flex items-center justify-center">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Request Quote
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  )
+}

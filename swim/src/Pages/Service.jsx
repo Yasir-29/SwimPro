@@ -1,56 +1,92 @@
-import React from "react";
+import { Waves, Wrench, Droplets, Sparkles } from "lucide-react"
 
-const services = [
-  {
-    icon: (
-      <svg className="w-10 h-10 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" /></svg>
-    ),
-    title: "Custom Pool Design",
-    desc: "Unique, tailored pool designs to fit your space and lifestyle."
-  },
-  {
-    icon: (
-      <svg className="w-10 h-10 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /></svg>
-    ),
-    title: "Construction & Build",
-    desc: "Expert construction with premium materials and craftsmanship."
-  },
-  {
-    icon: (
-      <svg className="w-10 h-10 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20l9-5-9-5-9 5 9 5z" /><path d="M12 12V4" /></svg>
-    ),
-    title: "Renovation & Remodel",
-    desc: "Modernize and upgrade your existing pool with new features."
-  },
-  {
-    icon: (
-      <svg className="w-10 h-10 text-[#00BFFF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3h.01" /><path d="M21 3v6h-6" /></svg>
-    ),
-    title: "Maintenance & Care",
-    desc: "Ongoing pool maintenance to keep your water crystal clear."
-  }
-];
+export default function Services() {
+  const services = [
+    {
+      icon: <Waves className="w-8 h-8" />,
+      title: "Pool Design",
+      description: "Custom swimming pool designs tailored to your space and preferences with 3D visualization.",
+      features: ["3D Design", "Custom Layouts", "Modern Aesthetics"],
+    },
+    {
+      icon: <Wrench className="w-8 h-8" />,
+      title: "Construction",
+      description: "Complete pool construction services using premium materials and advanced techniques.",
+      features: ["Quality Materials", "Expert Installation", "Timely Delivery"],
+    },
+    {
+      icon: <Droplets className="w-8 h-8" />,
+      title: "Waterproofing",
+      description: "Advanced waterproofing solutions ensuring long-lasting protection and durability.",
+      features: ["Advanced Sealants", "Leak Prevention", "Long-term Warranty"],
+    },
+    {
+      icon: <Sparkles className="w-8 h-8" />,
+      title: "Accessories",
+      description: "Premium pool accessories including lighting, filtration, and automation systems.",
+      features: ["LED Lighting", "Filtration Systems", "Pool Automation"],
+    },
+  ]
 
-const Service = () => {
   return (
-    <div className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#0B1B30]">Our Services</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, idx) => (
+    <section id="services" className="py-20 bg-[#F3F4F6]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0B1B30] mb-6">
+            Our <span className="text-[#00BFFF]">Services</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive swimming pool solutions from concept to completion, backed by years of expertise and
+            innovation.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
             <div
-              key={idx}
-              className="bg-[#F3F4F6] rounded-2xl p-8 flex flex-col items-center text-center shadow transition-transform hover:-translate-y-2 hover:shadow-xl duration-200"
+              key={index}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
             >
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-[#0B1B30]/80">{service.desc}</p>
+              {/* Icon */}
+              <div className="w-16 h-16 bg-[#00BFFF]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#00BFFF] transition-colors duration-300">
+                <div className="text-[#00BFFF] group-hover:text-white transition-colors duration-300">
+                  {service.icon}
+                </div>
+              </div>
+
+              {/* Content */}
+              <h3 className="text-xl font-bold text-[#0B1B30] mb-4">{service.title}</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+
+              {/* Features */}
+              <ul className="space-y-2">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                    <div className="w-1.5 h-1.5 bg-[#00BFFF] rounded-full mr-3"></div>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Service; 
+        {/* CTA Section */}
+        <div className="text-center mt-16">
+          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-[#0B1B30] mb-4">Ready to Build Your Dream Pool?</h3>
+            <p className="text-gray-600 mb-6">
+              Get a free consultation and quote for your swimming pool project. Our experts are ready to help you create
+              the perfect aquatic space.
+            </p>
+            <button className="bg-[#00BFFF] hover:bg-[#0099CC] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              Schedule Consultation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
