@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { ExternalLink } from "lucide-react"
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all")
+  const [showAll, setShowAll] = useState(false)
 
   const filters = [
     { id: "all", label: "All Projects" },
@@ -72,6 +72,8 @@ export default function Projects() {
   const filteredProjects =
     activeFilter === "all" ? projects : projects.filter((project) => project.category === activeFilter)
 
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3)
+
   return (
     <section id="projects" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,7 +92,10 @@ export default function Projects() {
             {filters.map((filter) => (
               <button
                 key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
+                onClick={() => {
+                  setActiveFilter(filter.id)
+                  setShowAll(false)
+                }}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                   activeFilter === filter.id
                     ? "bg-[#00BFFF] text-white shadow-lg"
@@ -105,7 +110,7 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {visibleProjects.map((project) => (
             <div
               key={project.id}
               className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
@@ -113,15 +118,12 @@ export default function Projects() {
               {/* Image */}
               <div className="relative overflow-hidden">
                 <img
-                  src={project.image || "/placeholder.svg"}
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <button className="bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors duration-300">
-                    <ExternalLink className="w-6 h-6" />
-                  </button>
-                </div>
+                {/* Hover Overlay without icon */}
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
               {/* Content */}
@@ -140,11 +142,16 @@ export default function Projects() {
         </div>
 
         {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="bg-[#00BFFF] hover:bg-[#0099CC] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            View All Projects
-          </button>
-        </div>
+        {!showAll && filteredProjects.length > 3 && (
+          <div className="text-center mt-12">
+            <button
+              className="bg-[#00BFFF] hover:bg-[#0099CC] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              onClick={() => setShowAll(true)}
+            >
+              View All Projects
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

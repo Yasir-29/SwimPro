@@ -29,7 +29,7 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-20 bg-[#F3F4F6]">
+    <section id="services" className="py-20 bg-[#E0F7FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -72,6 +72,7 @@ export default function Services() {
             </div>
           ))}
         </div>
+
 
 
       </div>

@@ -1,44 +1,52 @@
 import React from "react";
 import Button from "./Button";
+import bgImage from "../assets/pool-1.jpeg"; 
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <section
+      id="contact"
+      className="py-20 bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div
+        className="rounded-3xl shadow-xl max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center py-10 backdrop-blur-sm"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.10)" }} 
+      >
         {/* Contact Form */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0B1B30]">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#05243A]">
             Get a Free Quote
           </h2>
           <form className="space-y-6">
             <div>
-              <label className="block mb-2 font-medium">Name</label>
+              <label className="block mb-2 font-medium text-black">Name</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#00BFFF] outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#0077B6] outline-none"
                 placeholder="Your Name"
               />
             </div>
             <div>
-              <label className="block mb-2 font-medium">Mobile No</label>
+              <label className="block mb-2 font-medium text-black">Mobile No</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#00BFFF] outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#0077B6] outline-none"
                 placeholder="Enter your mobile number"
               />
             </div>
             <div>
-              <label className="block mb-2 font-medium">Email</label>
+              <label className="block mb-2 font-medium text-black">Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#00BFFF] outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#0077B6] outline-none"
                 placeholder="Your Email Address"
               />
             </div>
             <div>
-              <label className="block mb-2 font-medium">Message</label>
+              <label className="block mb-2 font-medium text-black">Message</label>
               <textarea
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#00BFFF] outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#0077B6] outline-none"
                 rows="5"
                 placeholder="How can we help you?"
               />

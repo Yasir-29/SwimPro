@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+    bebas: ['"Bebas Neue"', 'cursive'],
+    inter: ['Inter', 'sans-serif'],
+    poppins: ['Poppins', 'sans-serif'],
+      },
       colors: {
         primary: {
           DEFAULT: "#00BFFF",
@@ -47,9 +52,6 @@ module.exports = {
           900: "#111827",
         },
       },
-      fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.5s ease-out",
@@ -70,7 +72,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-  ],
+  plugins: [require("tailwindcss-animate")],
 };
