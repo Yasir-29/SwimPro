@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Hero from './Pages/Hero';
 import About from './Pages/About';
@@ -14,25 +14,27 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={
-          <>
-            <Hero />
-            <About />
-            <Services />
-            <Projects />
-            <WhyUs />
-            <Testimonials />
-            <Contact />
-          </>
-        } />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/why-us" element={<WhyUs />} />
-        <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <div id="home">
+        <Hero />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="services">
+        <Services />
+      </div>
+      <div id="projects">
+        <Projects />
+      </div>
+      <div id="why-us">
+        <WhyUs />
+      </div>
+      <div id="testimonials">
+        <Testimonials />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
       <Footer />
     </Router>
   );
