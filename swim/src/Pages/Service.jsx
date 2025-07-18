@@ -73,19 +73,7 @@ export default function Services() {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-[#0B1B30] mb-4">Ready to Build Your Dream Pool?</h3>
-            <p className="text-gray-600 mb-6">
-              Get a free consultation and quote for your swimming pool project. Our experts are ready to help you create
-              the perfect aquatic space.
-            </p>
-            <button className="bg-[#00BFFF] hover:bg-[#0099CC] text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              Schedule Consultation
-            </button>
-          </div>
-        </div>
+
       </div>
     </section>
   )

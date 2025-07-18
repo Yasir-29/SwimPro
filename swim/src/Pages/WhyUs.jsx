@@ -69,7 +69,7 @@ export default function WhyUs() {
           ))}
         </div>
 
-        {/* Stats Section */}
+        {/* Stats Section
         <div className="mt-20 bg-white rounded-2xl p-8 shadow-lg">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
@@ -89,7 +89,7 @@ export default function WhyUs() {
               <div className="text-gray-600">Client Satisfaction</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

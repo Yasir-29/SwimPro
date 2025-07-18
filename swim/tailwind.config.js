@@ -1,22 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-const defaultConfig = require("tailwindcss/defaultConfig")
-const shadcnConfig = require("shadcn/ui/tailwind.config")
-
 module.exports = {
-  ...shadcnConfig,
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html",
-    "./**/*.{js,jsx,ts,tsx,mdx}",
-    "*.{js,jsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    ...shadcnConfig.theme,
     extend: {
       colors: {
-        ...shadcnConfig.theme.extend.colors,
         primary: {
           DEFAULT: "#00BFFF",
           50: "#E6F7FF",
@@ -79,5 +70,7 @@ module.exports = {
       },
     },
   },
-  plugins: [...shadcnConfig.plugins, require("tailwindcss-animate")],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
+};
