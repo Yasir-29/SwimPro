@@ -1,5 +1,4 @@
 import { ArrowRight, Play } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function Hero() {
   const scrollToSection = (id) => {
@@ -18,12 +17,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#E0F7FA]/90"></div>
 
       {/* Content */}
-      <motion.div 
-        className="relative z-10 max-w-4xl animate-fade-up duration-1000"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+      <div className="relative z-10 max-w-4xl animate-fade-up duration-1000">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
           Veni Enterprises<br className="hidden md:block" />
           <span className="text-[#00BFFF]">Swimming Pool</span> Designers & Contractors
@@ -65,7 +59,7 @@ export default function Hero() {
             <div className="text-[#045D75] text-lg font-medium">Client Satisfaction</div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
